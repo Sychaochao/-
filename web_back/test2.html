@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <!-- 设置模板 -->
+    <script type="text/html" id="abc">
+        <h1>{{xingming}}</h1>
+        <p>{{sex}}</p>
+
+        {{if age >= 18}}
+            <p>欢迎来玩哟~</p>
+        {{else}}
+            <p>请在大人的陪同下进入</p>
+        {{/if}}
+
+        <ul>
+            {{each hobby value key}}
+            <li>{{value}}</li>
+            {{/each}}
+        </ul>
+
+    </script>
+
+
+    <script src="./js/template-web.js"></script>
+    <script>
+        var str = template('abc', {
+            xingming: '于自航',
+            sex: '女',
+            age: 18,
+            hobby: ['男', '睡觉', '吃饭']
+        });
+
+        console.log(str);
+        document.body.innerHTML = str;
+    </script>
+
+</body>
+</html>

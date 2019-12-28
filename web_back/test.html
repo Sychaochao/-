@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>演示模板引擎的使用</title>
+</head>
+<body>
+    <p>模板引擎的作用：1、提高速度。2、将html和js分开</p>
+
+    <div id="content">
+
+    </div>
+
+
+    <!-- 设置模板 -->
+    <script type="text/html" id="moban">
+        <h2>{{title}}</h2>
+        <p>{{age}}</p>
+        <ul>
+            <li>{{heroes[0]}}</li>
+            <li>{{heroes[1]}}</li>
+            <li>{{heroes[1]}}</li>
+            <li>{{heroes[3]}}</li>
+        </ul>
+    </script>
+    
+
+    <script src="./js/template-web.js"></script>
+    <script>
+        var zhi = {
+            title: '模板引擎测试',
+            age: 20,
+            heroes: ['叶问', '孙悟空', '雷昆仑', '于子航']
+        };
+        // 调用插件方法，渲染页面即可
+        var str = template('moban', zhi);
+        /*
+        一、设置模板标签 
+            1. 模板标签要设置成script标签
+            2. 模板标签必须有type属性，值是text/html
+            3. 模板标签必须有id
+        二、调用template函数
+            1. 参数1： 模板的id
+            2. 参数2： 要显示的数据。数据必须是JS对象形式。
+            3. 返回值：模板和数组组合后的结果
+        */
+        console.log(str);
+        document.getElementById('content').innerHTML = str;
+
+    </script>
+</body>
+</html>

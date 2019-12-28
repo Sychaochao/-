@@ -30,15 +30,11 @@ var user ={
     )
     
     },
-    getuser: function () {
+    getuser: function (callback) {
         $.get(dzurl + '/admin/getuser',
         function(res){
-            if(res.code ===200){
-                //渲染页面 设置用户名头像
-                $('.user_info').find('img').attr('src',res.data.user_pic).next('span').html('欢迎&nbsp;&nbsp;'+ res.data.nickname)
-                //更改头像
-                $('#yel').attr('src',res.data.user_pic);
-            }
+            callback(res);
+         
         }
     )
     }
