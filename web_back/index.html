@@ -18,7 +18,7 @@
         <a href="#" class="logo"><img src="images/logo02.png" alt="logo"></a>
         <div class="user_info">
             <img src="images/2.jpg" alt="person">
-            <span>欢迎&nbsp;&nbsp;李思思</span>
+            <span></span>
             <b>管理员</b>
         </div>
         <div class="menu">
@@ -43,7 +43,7 @@
         </form>
         <div class="user_center_link">
             <a href="user.html" onclick="setMenu(3,0)" target="main_frame">个人中心</a>
-            <img src="images/2.jpg" alt="person">
+            <img src="images/2.jpg" alt="person" id="yel">
             <a href="#" id="suibian"><i class="iconfont icon-tuichu"></i> 退出</a>
         </div>
     </div>
@@ -118,7 +118,16 @@
 
             )
         })
-    
+    // `---------------------------------------------
+        $.get('http://localhost:8000/admin/getuser',
+            function(res){
+                if(res.code ===200){
+                    //渲染页面 设置用户名头像
+                    $('.user_info').find('img').attr('src',res.data.user_pic).next('span').html('欢迎&nbsp;&nbsp;'+ res.data.nickname)
+                    $('#yel').attr('src',res.data.user_pic);
+                }
+            }
+        )
     </script>
 </body>
 </html>

@@ -46,11 +46,14 @@
                         {user_name:username,password:password},
                         function(res){
                             alert(res.msg);
-                            if(res.code ===20){
-                               location.href='login.html';
+                            
+                            if(res.code ===200){
+                                console.log(1);
+                                
+                               location.href='index.html';
                             }
                         },
-                        'json'
+                    'json'
                     )
                     
                 
