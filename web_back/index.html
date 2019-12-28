@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="css/iconfont.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="./utils/config.js"></script>
+    <script src="./utils/user.js"></script>
 </head>
 
 <body>
@@ -106,28 +108,11 @@
     <!-- ----------退出-------------- -->
     <script>
         $('#suibian').click(function(){
-            $.post('http://localhost:8000/admin/logout',
-                function(res){
-                   alert(res.msg)
-                    
-                    if(res.code ===200){
-                        //退出成功
-                        location.href='login.html';
-                    }
-                }
-
-            )
+            user.logout();
         })
-    // `---------------------------------------------
-        $.get('http://localhost:8000/admin/getuser',
-            function(res){
-                if(res.code ===200){
-                    //渲染页面 设置用户名头像
-                    $('.user_info').find('img').attr('src',res.data.user_pic).next('span').html('欢迎&nbsp;&nbsp;'+ res.data.nickname)
-                    $('#yel').attr('src',res.data.user_pic);
-                }
-            }
-        )
+    // `-----------------------获取管理员信息----------------------
+        user.getuser();         
+       
     </script>
 </body>
 </html>

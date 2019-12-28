@@ -1,0 +1,1 @@
+var dzurl ='http://localhost:8000';
